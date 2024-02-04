@@ -1,5 +1,15 @@
+# Scraping pattern constants for scraping AptoideApp´s attributes from Aptoide Website
+SCRAPING_PATTERNS: dict[str,str] = {
+  "name": r'<strong>Name.*?</strong>(.*?)</span>',
+  "version": r'<strong>Version.*?</strong>(.*?)</span>',
+  "downloads": r'<strong>Downloads.*?</strong>(.*?)</span>',
+  "release_date": r'<strong>Release Date.*?</strong>(.*?)</span>',
+  "description": r'\"media\":.*?\"description\":\"(.*?)\",\"summary\":',
+  }
 
-class ApptoidApp:
+
+
+class AptoideApp:
   """
   A class used to represent apps retrieved from Aptoide app store website
 
@@ -10,7 +20,7 @@ class ApptoidApp:
     version : str
         the version number of the app
     downloads : str
-        the number of app downloads in millions
+        the quantity of downloads
     release_date : str
         the date and time when the app was released on Aptoide app store
     description : str
