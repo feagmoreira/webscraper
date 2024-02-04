@@ -1,9 +1,10 @@
 from resources import *
 from model import *
 def main():
-    url = "https://pubg-new-state.en.aptoide.com/app"
+    url = "x"
     
     html = get_html_page(url)
+    print(html)
     description = extract_AptoidApp_from_html(html,SCRAPING_PATTERNS)
     print(description)
 
