@@ -48,7 +48,7 @@ def extract_AptoidApp_from_html(html: str, patterns: dict[str,str]) -> Type[Apto
             # Converting from raw string to regular string to use website original formatting 
             attributes[key]  = unicode_escape_decode(result_raw)[0]
         else:
-            return "Error scraping html: No match found for attribute " + key
+            return "Error scraping html. No match found for attribute: " + key
          
     extracted_app: Type[AptoideApp] = AptoideApp(attributes["name"], attributes["version"], attributes["downloads"], attributes["release_date"], attributes["description"])
     
@@ -65,7 +65,7 @@ def validate_url(url: str)-> bool:
 class AptoideAppResource:
     def on_get(self, req: falcon.Request, resp: falcon.Response) -> None:
        url: str = req.params["url"]
-       print(url)
+       
        # Validate user input (URL)
        url_valid: bool = validate_url(url)
        
@@ -75,6 +75,8 @@ class AptoideAppResource:
 
             # Validate Return from get_html_page function
             if "Error getting html" not in html:
+                #Inlusing console log message in the server
+                print("Scraping url: " + url)
                 # Scraping html and returning object
                 app_obj: Type[AptoideApp] | str = extract_AptoidApp_from_html(html, SCRAPING_PATTERNS)
 
@@ -83,13 +85,16 @@ class AptoideAppResource:
                     resp.text = json.dumps(app_obj.__dict__)
                     resp.status = falcon.HTTP_200
                 else:
-                    resp.text = app_obj
+                    error: dict[str,str] = {"error": app_obj}
+                    resp.text = json.dumps(error)
                     resp.status = falcon.HTTP_500
             else:
-                resp.text = html
+                error: dict[str,str] = {"error": html}
+                resp.text = json.dumps(error)
                 resp.status = falcon.HTTP_500
        else:
-           resp.text = "Error: Invalid url format input"
+           error: dict[str,str] = {"error":"Invalid url format input"}
+           resp.text = json.dumps(error)
            resp.status = falcon.HTTP_400
 
 

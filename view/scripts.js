@@ -15,28 +15,34 @@ get_app = async () => {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             }
-        }).then(response => response.json());
-
-    if (response.message) {
-        alert(response.message);
+        })
+    if (response.status == 200) {
+        let app = await response.json()
+        show_app_results(app)
+        return
     }
-
     else {
-        console.log(response)
-        //show_app_results(response)
+        let status = response.status
+        let statusText = response.statusText
+        let message = await response.json()
+        alert(`Http Code: ${status} - ${statusText}.\nScraper Error: ${message.error}`);
+        return
     }
 
 }
 
-//const show_app_results = (response) =>{
-var strTable = `<h2 class="text-white">Search Results</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <th>App Name/th>
-                            <th> Name </th>
-                            <th> Country </th>
-    </thead>
-    
-    <tbody>`;
-
-//}
+const show_app_results = (app) => {
+    let card = `<div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${app.name}</h5>
+                        <p class="card-text"><strong>Description</strong></p>
+                        <p class="card-text">${app.description}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Downloads: </strong>${app.downloads}</li>
+                        <li class="list-group-item"><strong>Version: </strong>${app.version}</li>
+                        <li class="list-group-item"><strong>Release Date: </strong>${app.release_date}</li>
+                        </ul>
+                    </div>`
+    document.getElementById("placeHolder").innerHTML = card;
+}
