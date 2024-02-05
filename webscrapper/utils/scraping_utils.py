@@ -20,8 +20,11 @@ def get_html_page(url: str) -> str:
 
     # Error handling for urlopen call
     except URLError as e:
-        reason: str = e.reason
-        return "Error getting html: " + reason
+        reason: str | BaseException = e.reason
+        if type(reason) == str:
+            return "Error getting html: " + reason
+        else:
+            return "Error getting html: Internal error"
     
     # Error handling for invalir URL - URL ValueError
     except ValueError as e:
