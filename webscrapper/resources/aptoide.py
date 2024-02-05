@@ -2,31 +2,9 @@ import json
 import falcon
 import re
 from codecs import unicode_escape_decode
-from typing import Type, BinaryIO
-from urllib.error import URLError
-from urllib.request import urlopen
-from urllib.parse import urlparse
+from typing import Type
+from webscrapper.utils.scraping_utils import validate_url, get_html_page
 from webscrapper.model.aptoide import AptoideApp, SCRAPING_PATTERNS
-
-def get_html_page(url: str) -> str:
-    
-    # Http call to get html code from remote page
-    try:
-         page: BinaryIO  = urlopen(url)
-
-    # Error handling for urlopen call
-    except URLError as e:
-        reason: str = e.reason
-        return "Error getting html: " + reason
-    
-    # Error handling for invalir URL - URL ValueError
-    except ValueError as e:
-        return "Error getting html: "+ str(e)
-
-    # Extracting html content as raw string
-    html_content_raw: str = page.read().decode("utf-8")
-
-    return html_content_raw
 
 def extract_AptoidApp_from_html(html: str, patterns: dict[str,str]) -> Type[AptoideApp] | str: 
      # Removing empty HTML comments
@@ -53,14 +31,6 @@ def extract_AptoidApp_from_html(html: str, patterns: dict[str,str]) -> Type[Apto
     extracted_app: Type[AptoideApp] = AptoideApp(attributes["name"], attributes["version"], attributes["downloads"], attributes["release_date"], attributes["description"])
     
     return extracted_app
-
-def validate_url(url: str)-> bool:
-    # Use urlparse function to validate url format and components
-    try:
-        result = urlparse(url)
-        return all([result.scheme, result.netloc])
-    except ValueError:
-        return False
 
 class AptoideAppResource:
     def on_get(self, req: falcon.Request, resp: falcon.Response) -> None:
