@@ -3,7 +3,7 @@ Contains general utility functions used to support web scraping tools.
 
 Functions
 ---------
-validate_url - validate input urls that will be scraped
+validate_url - validate input urls that will be scraped \n
 get_html_page - grabs the page html and returns as a raw string that will be used for scraping
 
 """
