@@ -1,4 +1,11 @@
-get_app = async () => {
+/**
+ * Function that will be triggered when the Submit Request button is clicked
+ * 
+ * Will get a valid (not empty) url input and execute API call to backend to collect App´s information from
+ * 
+ * Aptoide website
+ */
+const get_app = async () => {
     let aptoide_url = document.getElementById('url').value;
 
     // Validating if input is not empty
@@ -31,6 +38,12 @@ get_app = async () => {
 
 }
 
+/**
+ * Function that will be used to update index page (placeholder div) with app information retrieved from the backend.
+ * 
+ * @param app - javascript object that contains app information retrieved from the backend
+ * 
+ */
 const show_app_results = (app) => {
     let card = `<div class="card">
                     <div class="card-body">

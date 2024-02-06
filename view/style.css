@@ -3,7 +3,7 @@ body {
     background-color: darkblue;
 }
 
-/* Included to preserve spacing and line break characters from back-end*/
+/* Included to preserve spacing and line break characters from information received by the back-end*/
 p {
     white-space: pre-wrap;
 }

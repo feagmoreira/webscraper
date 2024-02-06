@@ -14,7 +14,7 @@ class AptoideApp:
   A class used to represent apps retrieved from Aptoide app store website
 
   Attributes
-    ----------
+  ----------
     name : str
         the app name
     version : str
@@ -25,6 +25,11 @@ class AptoideApp:
         the date and time when the app was released on Aptoide app store
     description : str
         the app description 
+  
+  Methods
+  -------
+    __str__
+        String representation of AptoideAPP object
 
   """
 
@@ -51,7 +56,8 @@ class AptoideApp:
 
   def __str__(self) -> str:
     """
-    String representation of AptoideAPP object
+    String representation of AptoideApp object
+
     """
     return "Name: " + self.name + "\n" + \
                "Version: " + self.version + "\n" + \
