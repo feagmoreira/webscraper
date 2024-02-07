@@ -1,3 +1,6 @@
+"""
+Test Cases for function test_extract_ApptoidApp_from_html from resource package
+"""
 import pytest
 
 import webscraper.resources.aptoide as aptoide_resource
