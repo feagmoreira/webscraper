@@ -13,12 +13,12 @@ mkdir webscrapper
 - Extract zip file in the created directory.
 
 <u>Windows Enviroment</u> <br>
-
+(Command should be executed from the folder where the zipped file is located)<b>
 Example:<br>
 
 ```cmd
-expand source destination
-expand 'C:\Users\user\downloads' 'C:\Users\user\Desktop\webscrapper'
+tar -xf file.zip -C destination
+tar -xf webscraper.zip -C C:\Users\user\Desktop\webscrapper
 ```
 
 <u>Non-Windows Enviroment</u> <br>
@@ -28,6 +28,7 @@ Example:<br>
 unzip -d /dest/directory/ {file.zip} 
 unzip -d /projects/webscraper/ webscraper.zip
 ```
+After unzipping the file, the top level of the project will be webscraper-main
 
 - Create and activate Virtual Enviroment inside the created directory
 
@@ -36,7 +37,7 @@ unzip -d /projects/webscraper/ webscraper.zip
 Example:<br>
 
 ```cmd
-cd webscraper
+cd webscraper-main
 python -m venv .venv
 .venv\Scripts\activate.bat
 ```
@@ -46,7 +47,7 @@ python -m venv .venv
 Example:<br>
 
 ```bash
-cd webscraper
+cd webscraper-main
 python -m venv .venv
 source .venv/bin/activate
 ```
