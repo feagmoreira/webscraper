@@ -1,6 +1,6 @@
 import pytest
 
-import webscrapper.utils.scraping_utils as scraping_utils
+import webscraper.utils.scraping_utils as scraping_utils
 
 # validate_url tests
 def test_validate_url_valid_url():

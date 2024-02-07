@@ -1,8 +1,8 @@
 import pytest
 
-import webscrapper.resources.aptoide as aptoide_resource
-import webscrapper.model.aptoide as aptoide_model
-import webscrapper.utils.scraping_utils as scraping_utils
+import webscraper.resources.aptoide as aptoide_resource
+import webscraper.model.aptoide as aptoide_model
+import webscraper.utils.scraping_utils as scraping_utils
 
 def test_extract_ApptoidApp_from_html_invalid_html_():
     html = "x"

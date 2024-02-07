@@ -14,8 +14,8 @@ import json
 import falcon # type: ignore
 import re
 from codecs import unicode_escape_decode
-from webscrapper.utils.scraping_utils import validate_url, get_html_page
-from webscrapper.model.aptoide import AptoideApp, SCRAPING_PATTERNS
+from webscraper.utils.scraping_utils import validate_url, get_html_page
+from webscraper.model.aptoide import AptoideApp, SCRAPING_PATTERNS
 
 def extract_AptoidApp_from_html(html: str, patterns: dict[str,str]) -> AptoideApp | str: 
     """

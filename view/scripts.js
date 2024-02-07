@@ -13,7 +13,7 @@ const get_app = async () => {
         alert('Url information is missing');
         return;
     }
-    let url = `http://localhost:8000/aptoideapp/?url=${aptoide_url}`
+    let url = `http://127.0.0.1:8000/aptoideapp/?url=${aptoide_url}`
 
     let response = await fetch(url,
         {

@@ -8,12 +8,12 @@ add_aptoide_routes - configures routes in a Falcon Web Framework (https://falcon
 """
 import falcon  # type: ignore
 from typing import Type
-from webscrapper.resources.aptoide import AptoideAppResource
+from webscraper.resources.aptoide import AptoideAppResource
 
 # Aptoide Website Scraping endpoint routes
 def add_aptoide_routes(app: Type[falcon.App]) -> None:
     """
-        Includes Aptoide website endpoint routes to a Falcon Web Framework (https://falcon.readthedocs.io/en/stable/) App object
+        Includes Aptoide website endpoint routes to a Falcon Web Framework (https://falcon.readthedocs.io/en/stable/) App object.
         Links endpoint path with falcon resource class that will treat requests
 
         Parameters
