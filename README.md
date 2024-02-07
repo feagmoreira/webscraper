@@ -17,16 +17,16 @@ mkdir webscrapper
 Example:<br>
 
 ```cmd
-expand source destination <br>
-expand 'C:\Users\user\downloads' 'C:\Users\user\Desktop\webscrapper' <br>
+expand source destination
+expand 'C:\Users\user\downloads' 'C:\Users\user\Desktop\webscrapper'
 ```
 
 <u>Non-Windows Enviroment</u> <br>
 Example:<br>
 
 ```bash
-unzip -d /dest/directory/ {file.zip} <br>
-unzip -d /projects/webscraper/ webscraper.zip <br>
+unzip -d /dest/directory/ {file.zip} 
+unzip -d /projects/webscraper/ webscraper.zip
 ```
 
 - Create and activate Virtual Enviroment inside the created directory
